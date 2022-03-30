@@ -2,6 +2,15 @@
 // Treat it like a data structure - add methods to interact
 // with and manipulate the data.
 
+/*
+I:
+O:
+Edge:
+Constraint:
+Strategy:
+Psuedo:
+*/
+
 var Messages = {
 
   // TODO: Define how you want to store your messages.

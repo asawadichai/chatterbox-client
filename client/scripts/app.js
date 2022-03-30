@@ -19,6 +19,9 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    //setInterval();
+
+    // call App.fetch every 5 to 10 seconds. Recommend to use set interval
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
   },
