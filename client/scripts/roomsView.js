@@ -9,12 +9,14 @@ var RoomsView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    RoomsView.render();
     RoomsView.$button.on('click', RoomsView.handleClick);
     RoomsView.$select.on('change', RoomsView.handleChange);
   },
 
   render: function() {
-    // TODO: Render out the list of rooms.
+    var roomsList = Parse.readAll();
+    console.log(roomsList);
   },
 
   renderRoom: function(roomname) {
@@ -26,8 +28,8 @@ var RoomsView = {
     // TODO: Handle a user selecting a different room.
   },
 
-  handleClick: function(event) {
-    Rooms.add(event);
+  handleClick: function() {
+    Rooms.add();
   }
 
 };

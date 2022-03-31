@@ -9,10 +9,10 @@ var Rooms = {
 
   // TODO: Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
-  add: function (event) {
-    console.log(event);
-    console.log('$select', RoomsView.$select);
-    //var room = event.target.
+  add: function () {
+    var roomname = prompt('Please enter a roomname');
+    Rooms._data.add(roomname);
+    RoomsView.renderRoom(roomname);
   }
 
 };

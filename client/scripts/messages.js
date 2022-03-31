@@ -14,9 +14,24 @@ Psuedo:
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+  _data: [],
 
-  // TODO: Define methods which allow you to retrieve from,
-  // add to, and generally interact with the messages.
+  add: function(message) {
+    Messages._data = Messages._data.concat(message);
+    console.log('messages datastructure', Messages._data);
+  }
 
 };
+
+/*
+ it('should try to send a message upon clicking submit', function() {
+      sinon.spy(Parse, 'create');
+
+      App.initialize();
+      $('#message').val('Why so many Mel Brooks quotes?');
+      $('form .submit').trigger('submit');
+      expect(Parse.create.called).to.be.true;
+
+      Parse.create.restore();
+    });
+*/
