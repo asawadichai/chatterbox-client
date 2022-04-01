@@ -6,11 +6,13 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    MessagesView.render();
     $('.username').on('click', MessagesView.handleClick);
   },
 
-  render: function() {
+  render: function(messages) {
+    MessagesView.$chats.empty();
+    messages.forEach(element => MessagesView.renderMessage(element));
+    //console.log('render fetch', Messages.fetch());
     // TODO: Render _all_ the messages.
     // empty the chats
     // this.$chats.empty();
@@ -20,6 +22,8 @@ var MessagesView = {
     //  messageDiv
     //})
     //take messages and put into chat
+
+
   },
 
   renderMessage: function(message) {

@@ -15,21 +15,24 @@ var RoomsView = {
   },
 
   render: function() {
-    var roomsList = Parse.readAll();
-    console.log(roomsList);
+
   },
 
   renderRoom: function(roomname) {
+    console.log('render room');
     var $room = $('<option value=' + roomname + '>' + roomname + '</option>');
     $('#rooms select').append($room);
   },
 
   handleChange: function(event) {
-    // TODO: Handle a user selecting a different room.
+    var selectedRoom = event.currentTarget.value;
+    var roomMessages = Messages._data.rooms[selectedRoom];
+    MessagesView.render(roomMessages);
   },
 
   handleClick: function() {
-    Rooms.add();
+    var roomname = prompt('Please enter a roomname');
+    Rooms.add(roomname);
   }
 
 };

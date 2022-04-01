@@ -9,25 +9,18 @@ var Rooms = {
 
   // TODO: Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
-  add: function () {
-    var roomname = prompt('Please enter a roomname');
-    Rooms._data.add(roomname);
-    RoomsView.renderRoom(roomname);
-  }
+  add: function (roomname) {
+    if (!Rooms._data.has(roomname)) {
+      Rooms._data.add(roomname);
+      //Rooms.sort();
+      RoomsView.renderRoom(roomname);
+    }
+  },
 
+  // sort: function () {
+  //   var sortedRoom = Array.from(Rooms._data).sort();
+  //   console.log(sortedRoom);
+  //   Rooms._data = new Set();
+  //   //sortedRoom.forEach(element => Rooms._data.add(element));
+  // }
 };
-
-/*
-   it('should add a room when clicking add', function() {
-      sinon.spy(Rooms, 'add');
-      var prompt = window.prompt;
-      window.prompt = sinon.stub().returns('testroom');
-
-      App.initialize();
-      $('#rooms').find('button').trigger('click');
-      expect(Rooms.add.called).to.be.true;
-
-      window.prompt = prompt;
-      Rooms.add.restore();
-    });
-*/

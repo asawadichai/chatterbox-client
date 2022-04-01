@@ -2,36 +2,34 @@
 // Treat it like a data structure - add methods to interact
 // with and manipulate the data.
 
-/*
-I:
-O:
-Edge:
-Constraint:
-Strategy:
-Psuedo:
-*/
-
 var Messages = {
 
-  // TODO: Define how you want to store your messages.
-  _data: [],
+  _data: {
+    messages: [],
+    friends: {},
+    rooms: {}
+  },
 
-  add: function(message) {
-    Messages._data = Messages._data.concat(message);
-    console.log('messages datastructure', Messages._data);
-  }
+  add: function(messages) {
+    Messages._data.messages = messages;
+    messages.forEach(function (message) {
+      Rooms.add(message.roomname);
+      if (Messages._data.rooms[message.roomname] === undefined) {
+        Messages._data.rooms[message.roomname] = [message];
+      } else {
+        Messages._data.rooms[message.roomname].push(message);
+      }
+      if (Friends._data.has(message.username)) {
+        if (Messages._data.friends[message.username] = undefined) {
+          Messages._data.friends[message.username] = [message];
+        } else {
+          Messages._data.friends[message.username].push(message);
+        }
+      }
+    });
+    console.log('Messages ', Messages._data);
+    RoomsView.render();
+    MessagesView.render(Messages._data.messages);
+  },
 
 };
-
-/*
- it('should try to send a message upon clicking submit', function() {
-      sinon.spy(Parse, 'create');
-
-      App.initialize();
-      $('#message').val('Why so many Mel Brooks quotes?');
-      $('form .submit').trigger('submit');
-      expect(Parse.create.called).to.be.true;
-
-      Parse.create.restore();
-    });
-*/
