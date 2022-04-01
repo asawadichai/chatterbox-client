@@ -20,6 +20,19 @@ var MessageView = {
       '  <div><%= text %></div>' +
       '  <div><%= roomname %></div>' +
     '</div>'
-  )
+  ),
+
+  sanitize: function(text) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27',
+      "/": "&#x2F",
+    };
+    const reg = /[&<>"'/]/ig;
+    return text.replace(reg, (match)=>(map[match]));
+  }
 
 };

@@ -12,24 +12,14 @@ var MessagesView = {
   render: function(messages) {
     MessagesView.$chats.empty();
     messages.forEach(element => MessagesView.renderMessage(element));
-    //console.log('render fetch', Messages.fetch());
-    // TODO: Render _all_ the messages.
-    // empty the chats
-    // this.$chats.empty();
-    // get the messages
-    // append the messages
-    // messages.forEach(function(message) {
-    //  messageDiv
-    //})
-    //take messages and put into chat
-
-
   },
 
   renderMessage: function(message) {
+    message.text = MessageView.sanitize(message.text);
     var $messageDiv = $(MessageView.render(message));
     $('#chats').append($messageDiv);
   },
+
 
   handleClick: function(event) {
     Friends.toggleStatus(event);

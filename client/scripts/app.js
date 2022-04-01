@@ -9,8 +9,8 @@ var App = {
   username: 'androo',
 
   initialize: function() {
-    //console.log('app', App.username);
-    //console.log('window', window.location);
+    console.log('app', App.username);
+    console.log('window', window.location);
     App.username = window.location.search.substr(10);
 
 

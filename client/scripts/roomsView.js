@@ -19,7 +19,7 @@ var RoomsView = {
   },
 
   renderRoom: function(roomname) {
-    console.log('render room');
+    roomname = MessageView.sanitize(roomname);
     var $room = $('<option value=' + roomname + '>' + roomname + '</option>');
     $('#rooms select').append($room);
   },
