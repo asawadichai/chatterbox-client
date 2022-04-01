@@ -15,9 +15,14 @@ var MessagesView = {
   },
 
   renderMessage: function(message) {
-    message.text = MessageView.sanitize(message.text);
-    var $messageDiv = $(MessageView.render(message));
-    $('#chats').append($messageDiv);
+    //console.log(message);
+    // if (message.text !== null && message.text !== undefined && message.text.length !== 0) {
+    //   message.text = MessageView.sanitize(message.text);
+    // }
+    if (message.text !== null && message.text !== undefined && message.text.length !== 0) {
+      var $messageDiv = $(MessageView.render(message));
+      $('#chats').append($messageDiv);
+    }
   },
 
 

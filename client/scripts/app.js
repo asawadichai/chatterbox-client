@@ -6,7 +6,7 @@ var App = {
 
   $spinner: $('.spinner img'),
 
-  username: 'androo',
+  username: 'anonymous',
 
   initialize: function() {
     console.log('app', App.username);

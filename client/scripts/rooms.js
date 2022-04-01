@@ -12,15 +12,16 @@ var Rooms = {
   add: function (roomname) {
     if (!Rooms._data.has(roomname)) {
       Rooms._data.add(roomname);
-      //Rooms.sort();
       RoomsView.renderRoom(roomname);
     }
   },
 
-  // sort: function () {
-  //   var sortedRoom = Array.from(Rooms._data).sort();
-  //   console.log(sortedRoom);
-  //   Rooms._data = new Set();
-  //   //sortedRoom.forEach(element => Rooms._data.add(element));
-  // }
+  update: function (rooms) {
+    Rooms._data.clear();
+    rooms.sort();
+    rooms.forEach((room) => {
+      Rooms._data.add(room);
+      RoomsView.renderRoom(room);
+    });
+  }
 };

@@ -13,7 +13,6 @@ var Messages = {
   add: function(messages) {
     Messages._data.messages = messages;
     messages.forEach(function (message) {
-      Rooms.add(message.roomname);
       if (Messages._data.rooms[message.roomname] === undefined) {
         Messages._data.rooms[message.roomname] = [message];
       } else {
@@ -27,7 +26,8 @@ var Messages = {
         }
       }
     });
-    console.log('Messages ', Messages._data);
+    Rooms.update(Object.keys(Messages._data.rooms));
+    //console.log('Messages ', Messages._data);
     RoomsView.render();
     MessagesView.render(Messages._data.messages);
   },

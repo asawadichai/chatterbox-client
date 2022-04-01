@@ -16,7 +16,7 @@ var FormView = {
     event.preventDefault();
     var textInput = FormView.$message[0].value;
     var username = App.username;
-    var roomname = FormView.$message[0].
+    //var roomname = ;
     //console.log('input text', FormView.$message[0].value);
     //console.log(FormView.$form);
     // TODO: Currently, this is all handleSubmit does.
