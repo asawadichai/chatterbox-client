@@ -12,6 +12,8 @@ var Friends = {
 
   toggleStatus: function(event) {
     var usr = event.target.innerText;
+
     Friends._data.add(usr);
+    MessagesView.friendClass();
   }
 };

@@ -7,7 +7,6 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // RoomsView.render();
     RoomsView.$button.on('click', RoomsView.handleClick);
     RoomsView.$select.on('change', RoomsView.handleChange);
   },

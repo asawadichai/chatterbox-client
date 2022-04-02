@@ -18,8 +18,6 @@ var Rooms = {
   },
 
   update: function (messages) {
-    //var rooms = [];
-    console.log(messages);
     messages.forEach((message) => {
       Rooms._data.add(message.roomname);
     });

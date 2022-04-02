@@ -9,8 +9,6 @@ var App = {
   username: 'anonymous',
 
   initialize: function() {
-    //console.log('app', App.username);
-    //console.log('window', window.location);
     App.username = window.location.search.substr(10);
 
 
@@ -25,15 +23,12 @@ var App = {
     var myTimer = setInterval(function () {
       App.fetch(App.stopSpinner);
     }, 10000);
-
-    // call App.fetch every 5 to 10 seconds. Recommend to use set interval
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      //console.log('app.js call', data);
       Messages.addAll(data);
       callback();
       // TODO: Use the data to update Messages and Rooms

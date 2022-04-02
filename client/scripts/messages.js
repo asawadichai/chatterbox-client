@@ -15,10 +15,9 @@ var Messages = {
     }
   },
   update: function(messages) {
-    console.log('before _data', Messages._data);
     var chatIDs = [];
     var newMessages = [];
-    Messages._data.forEach(message => { chatIDs.push(message.message_id);});
+    Messages._data.forEach(message => { chatIDs.push(message.message_id); });
     messages.forEach((message) => {
       if (!chatIDs.includes(message.message_id)) {
         Messages._data.push(message);
@@ -28,8 +27,6 @@ var Messages = {
     if (chatIDs.length > 0) {
       Rooms.update(newMessages);
     }
-    console.log('new mess', newMessages);
-    console.log('after _data', Messages._data);
   }
 
 };

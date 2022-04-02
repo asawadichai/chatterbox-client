@@ -11,15 +11,18 @@ var MessagesView = {
 
   render: function(messages) {
     MessagesView.$chats.empty();
-    console.log('render', messages);
     messages.forEach((element) => { MessagesView.$chats.append(MessageView.render(element)); });
+    MessagesView.friendClass();
+    MessagesView.initialize();
+  },
 
+  friendClass: function() {
+    Friends._data.forEach(friend => $('.username:contains("' + friend + '")').addClass('friend'));
   },
 
   renderMessage: function(message) {
     MessagesView.$chats.prepend(MessageView.render(message));
   },
-
 
   handleClick: function(event) {
     Friends.toggleStatus(event);
