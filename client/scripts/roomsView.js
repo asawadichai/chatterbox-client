@@ -13,31 +13,24 @@ var RoomsView = {
   },
 
   render: function(rooms) {
-    //console.log('RoomsView.render: ', rooms);
     RoomsView.$select.empty();
     rooms.forEach((room) => { RoomsView.renderRoom(room); });
   },
 
   renderRoom: function(roomname) {
-    console.log('renderROOM', Messages._data.rooms[roomname]);
-    var $room = $(`<option value="${roomname}"</option>`);
-    // if (roomname === RoomsView.selectedRoom) {
-    //   $room = $(`<option value="${roomname}" selected>${roomname}</option>`);
-    // }
+    var $room = $(`<option value="${roomname}">${roomname}</option>`);
     $('#rooms select').append($room);
   },
 
   handleChange: function(event) {
     RoomsView.selectedRoom = event.currentTarget.value;
-    var roomMessages = Messages._data.rooms[RoomsView.selectedRoom];
-    console.log('room messages', roomMessages);
+    var roomMessages = Messages._data.filter(message => message.roomname === RoomsView.selectedRoom);
     MessagesView.render(roomMessages);
   },
 
   handleClick: function() {
     var roomname = prompt('Please enter a roomname');
-    Rooms.add(roomname);
-    Messages._data.rooms[roomname] = [];
+    Rooms.add(roomname, RoomsView.renderRoom(roomname));
   }
 
 };

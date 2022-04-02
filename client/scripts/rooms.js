@@ -9,20 +9,20 @@ var Rooms = {
 
   // TODO: Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
-  add: function (roomname) {
+  add: function (roomname, callback = ()=>{}) {
     if (!Rooms._data.has(roomname)) {
       Rooms._data.add(roomname);
-      RoomsView.renderRoom(roomname);
     }
+
+    callback();
   },
 
-  update: function (rooms) {
-    Rooms._data.clear();
-    rooms.sort();
-    rooms.forEach((room) => {
-      Rooms._data.add(room);
+  update: function (messages) {
+    //var rooms = [];
+    console.log(messages);
+    messages.forEach((message) => {
+      Rooms._data.add(message.roomname);
     });
-    console.log('Rooms._data: ', Rooms._data);
-    RoomsView.render(Rooms._data);
+    RoomsView.render([...Rooms._data]);
   }
 };

@@ -4,35 +4,32 @@
 
 var Messages = {
 
-  _data: {
-    messages: [],
-    friends: {},
-    rooms: {}
-  },
+  _data: [],
 
-  add: function(messages) {
-    Messages._data.messages = messages;
-    Messages._data.friends = {};
-    Messages._data.rooms = {};
-    messages.forEach(function (message) {
-      if (Messages._data.rooms[message.roomname] === undefined) {
-        Messages._data.rooms[message.roomname] = [message];
-      } else {
-        Messages._data.rooms[message.roomname].push(message);
-      }
-      if (Friends._data.has(message.username)) {
-        if (Messages._data.friends[message.username] = undefined) {
-          Messages._data.friends[message.username] = [message];
-        } else {
-          Messages._data.friends[message.username].push(message);
-        }
+  addAll: function(messages) {
+    if (Messages._data.length === 0) {
+      Messages._data = messages;
+      Rooms.update(Messages._data);
+    } else {
+      Messages.update(messages);
+    }
+  },
+  update: function(messages) {
+    console.log('before _data', Messages._data);
+    var chatIDs = [];
+    var newMessages = [];
+    Messages._data.forEach(message => { chatIDs.push(message.message_id);});
+    messages.forEach((message) => {
+      if (!chatIDs.includes(message.message_id)) {
+        Messages._data.push(message);
+        newMessages.push(message);
       }
     });
-    console.log(Messages._data.rooms);
-    Rooms.update(Object.keys(Messages._data.rooms));
-    //console.log('Messages ', Messages._data);
-    // RoomsView.render();
-    // MessagesView.render(Messages._data.messages);
-  },
+    if (chatIDs.length > 0) {
+      Rooms.update(newMessages);
+    }
+    console.log('new mess', newMessages);
+    console.log('after _data', Messages._data);
+  }
 
 };
