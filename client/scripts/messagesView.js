@@ -12,21 +12,12 @@ var MessagesView = {
   render: function(messages) {
     MessagesView.$chats.empty();
     console.log('render', messages);
-    messages.forEach((element) => { MessagesView.renderMessage(element); });
+    messages.forEach((element) => { MessagesView.$chats.append(MessageView.render(element)); });
 
   },
 
   renderMessage: function(message) {
-    //console.log(message);
-    // if (message.text !== null && message.text !== undefined && message.text.length !== 0) {
-    //   message.text = MessageView.sanitize(message.text);
-    // }
-
-    // if (message.text !== null && message.text !== undefined && message.text.length !== 0) {
-    //   var $messageDiv = $(MessageView.render(message));
-    //   $('#chats').append($messageDiv);
-    // }
-    MessagesView.$chats.append(MessageView.render(message));
+    MessagesView.$chats.prepend(MessageView.render(message));
   },
 
 
