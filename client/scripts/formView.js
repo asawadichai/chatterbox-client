@@ -12,17 +12,12 @@ var FormView = {
   },
 
   handleSubmit: function(event) {
-    // Stop the browser from submitting the form
     event.preventDefault();
     var textInput = FormView.$message[0].value;
     var username = App.username;
-    //var roomname = ;
-    //console.log('input text', FormView.$message[0].value);
-    //console.log(FormView.$form);
-    // TODO: Currently, this is all handleSubmit does.
-    // Make this function actually send a message to the Parse API.
-    Parse.create({'roomname': 'reddit', 'text': textInput, 'username': username});
-    //MessagesView.renderMessage({'roomname': 'reddit', 'text': textInput, 'username': 'Andrew'});
+    var roomname = RoomsView.selectedRoom;
+    Parse.create({'roomname': roomname, 'text': textInput, 'username': username});
+    MessagesView.renderMessage({'roomname': roomname, 'text': textInput, 'username': username});
   },
 
   setStatus: function(active) {

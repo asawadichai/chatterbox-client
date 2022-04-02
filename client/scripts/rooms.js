@@ -21,7 +21,8 @@ var Rooms = {
     rooms.sort();
     rooms.forEach((room) => {
       Rooms._data.add(room);
-      RoomsView.renderRoom(room);
     });
+    console.log('Rooms._data: ', Rooms._data);
+    RoomsView.render(Rooms._data);
   }
 };

@@ -7,32 +7,37 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // TODO: Perform any work which needs to be done
-    // when this view loads.
-    RoomsView.render();
+    // RoomsView.render();
     RoomsView.$button.on('click', RoomsView.handleClick);
     RoomsView.$select.on('change', RoomsView.handleChange);
   },
 
-  render: function() {
-
+  render: function(rooms) {
+    //console.log('RoomsView.render: ', rooms);
+    RoomsView.$select.empty();
+    rooms.forEach((room) => { RoomsView.renderRoom(room); });
   },
 
   renderRoom: function(roomname) {
-    // roomname = MessageView.sanitize(roomname);
-    var $room = $('<option value=' + roomname + '>' + roomname + '</option>');
+    console.log('renderROOM', Messages._data.rooms[roomname]);
+    var $room = $(`<option value="${roomname}"</option>`);
+    // if (roomname === RoomsView.selectedRoom) {
+    //   $room = $(`<option value="${roomname}" selected>${roomname}</option>`);
+    // }
     $('#rooms select').append($room);
   },
 
   handleChange: function(event) {
-    var selectedRoom = event.currentTarget.value;
-    var roomMessages = Messages._data.rooms[selectedRoom];
+    RoomsView.selectedRoom = event.currentTarget.value;
+    var roomMessages = Messages._data.rooms[RoomsView.selectedRoom];
+    console.log('room messages', roomMessages);
     MessagesView.render(roomMessages);
   },
 
   handleClick: function() {
     var roomname = prompt('Please enter a roomname');
     Rooms.add(roomname);
+    Messages._data.rooms[roomname] = [];
   }
 
 };

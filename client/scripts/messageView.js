@@ -18,21 +18,21 @@ var MessageView = {
     '<div class="chat">' +
       '  <div class="username">' + '<%- username %>:</div>' +
       '  <div><%- text %></div>' +
-      '  <div><%- roomname %></div>' +
-    '</div>'
+      '</div>'
   ),
 
-  sanitize: function(text) {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#x27',
-      "/": "&#x2F",
-    };
-    const reg = /[&<>"'/]/ig;
-    return text.replace(reg, (match)=>(map[match]));
-  }
+  //      '  <div><%- roomname %></div>' +
+  // sanitize: function(text) {
+  //   const map = {
+  //     '&': '&amp;',
+  //     '<': '&lt;',
+  //     '>': '&gt;',
+  //     '"': '&quot;',
+  //     "'": '&#x27',
+  //     "/": "&#x2F",
+  //   };
+  //   const reg = /[&<>"'/]/ig;
+  //   return text.replace(reg, (match)=>(map[match]));
+  // }
 
 };

@@ -22,9 +22,9 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
-    // setInterval(function () {
-    //   App.fetch(App.stopSpinner);
-    // }, 5000);
+    var myTimer = setInterval(function () {
+      App.fetch(App.stopSpinner);
+    }, 5000);
 
     // call App.fetch every 5 to 10 seconds. Recommend to use set interval
     // TODO: Make sure the app loads data from the API
